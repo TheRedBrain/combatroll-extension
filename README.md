@@ -1,9 +1,9 @@
-# Fabric Example Mod
+# Combat Roll Extension
 
-## Setup
+This is an extension to the [Combat Roll](https://modrinth.com/mod/combat-roll) mod by Daedelus. It adds support for stamina provided by the mod [Stamina Attributes](https://modrinth.com/mod/stamina-attributes).
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+## Server config
 
-## License
+When 'rolling_requires_stamina' is set to true, the players stamina must be above 0 to be able to roll.
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+'rolling_stamina_cost' is the amount of stamina each roll costs.
