@@ -12,6 +12,7 @@
 	},
 
 	"license": "MIT",
+	"icon": "assets/combatrollextension/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
