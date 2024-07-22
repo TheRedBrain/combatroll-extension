@@ -3,7 +3,9 @@
 	"package": "com.github.theredbrain.combatrollextension.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"combatroll.client.RollManagerMixin"
+		"combatroll.client.RollManagerMixin",
+		"entity.LivingEntityMixin",
+		"entity.attribute.EntityAttributesMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

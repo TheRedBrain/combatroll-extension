@@ -2,17 +2,19 @@ package com.github.theredbrain.combatrollextension;
 
 import com.github.theredbrain.combatrollextension.config.ServerConfig;
 import com.github.theredbrain.combatrollextension.config.ServerConfigWrapper;
+import com.github.theredbrain.combatrollextension.entity.DuckLivingEntityMixin;
 import com.github.theredbrain.staminaattributes.StaminaAttributes;
 import com.github.theredbrain.staminaattributes.entity.StaminaUsingEntity;
 import com.google.gson.Gson;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
+import net.combatroll.api.RollInvulnerable;
 import net.combatroll.api.event.ServerSideRollEvents;
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -24,13 +26,16 @@ public class CombatRollExtension implements ModInitializer {
 	public static ServerConfig serverConfig;
 	private static PacketByteBuf serverConfigSerialized = PacketByteBufs.create();
 
+	public static EntityAttribute ROLL_STAMINA_COST;
+	public static EntityAttribute ROLL_INVULNERABLE_TICKS;
+
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Combat Roll was extended!");
 
 		// Config
 		AutoConfig.register(ServerConfigWrapper.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
-		serverConfig = ((ServerConfigWrapper)AutoConfig.getConfigHolder(ServerConfigWrapper.class).getConfig()).server;
+		serverConfig = ((ServerConfigWrapper) AutoConfig.getConfigHolder(ServerConfigWrapper.class).getConfig()).server;
 
 		// Events
 		serverConfigSerialized = ServerConfigSync.write(serverConfig);
@@ -39,7 +44,10 @@ public class CombatRollExtension implements ModInitializer {
 		});
 		ServerSideRollEvents.PLAYER_START_ROLLING.register((serverPlayerEntity, vec3d) -> {
 			if (!serverPlayerEntity.isCreative()) {
-				((StaminaUsingEntity) serverPlayerEntity).staminaattributes$addStamina(-serverConfig.rolling_stamina_cost);
+				((StaminaUsingEntity) serverPlayerEntity).staminaattributes$addStamina(-(((DuckLivingEntityMixin) serverPlayerEntity).combatrollextension$getRollStaminaCost() * serverConfig.global_rolling_stamina_cost_multiplier));
+				if (serverConfig.is_roll_invulnerable_ticks_attribute_active) {
+					((RollInvulnerable) serverPlayerEntity).setRollInvulnerableTicks((int) ((DuckLivingEntityMixin) serverPlayerEntity).combatrollextension$getRollInvulnerableTicks());
+				}
 			}
 		});
 
