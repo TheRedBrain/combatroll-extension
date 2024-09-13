@@ -1,8 +1,8 @@
-package com.github.theredbrain.combatrollextension.mixin.combatroll.client;
+package com.github.theredbrain.combatrollextension.mixin.combatroll.internals;
 
 import com.github.theredbrain.combatrollextension.CombatRollExtension;
 import com.github.theredbrain.staminaattributes.entity.StaminaUsingEntity;
-import net.combatroll.client.RollManager;
+import net.combat_roll.internals.RollManager;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

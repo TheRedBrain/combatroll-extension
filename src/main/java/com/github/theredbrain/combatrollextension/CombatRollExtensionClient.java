@@ -8,8 +8,8 @@ public class CombatRollExtensionClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        ClientPlayNetworking.registerGlobalReceiver(CombatRollExtension.ServerConfigSync.ID, (client, handler, buf, responseSender) -> {
-            CombatRollExtension.serverConfig = CombatRollExtension.ServerConfigSync.read(buf);
+        ClientPlayNetworking.registerGlobalReceiver(CombatRollExtension.ServerConfigSyncPacket.PACKET_ID, (payload, context) -> {
+            CombatRollExtension.serverConfig = payload.serverConfig();
         });
     }
 }
