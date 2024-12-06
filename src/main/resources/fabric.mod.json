@@ -25,11 +25,16 @@
 	"mixins": [
 		"combatrollextension.mixins.json"
 	],
+	"custom": {
+		"fzzy_config": [
+			"staminaattributes"
+		]
+	},
 	"depends": {
 		"minecraft": "${minecraft_version}",
 		"fabricloader": ">=${loader_version}",
 		"fabric-api": "*",
-		"cloth-config": ">=${cloth_config_version}",
+		"fzzy_config": ">=${fzzy_config_version}",
 		"combat_roll": ">=${combat_roll_version}",
 		"staminaattributes": ">=${stamina_attributes_version}"
 	}

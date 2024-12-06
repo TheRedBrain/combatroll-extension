@@ -1,3 +1,10 @@
+# 2.1.0
+
+- added "rolling_requires_stamina_cost" config option. When enabled, rolling requires stamina to be greater or equal to (roll_stamina_cost * global_multiplier).
+- server config can now be edited in game (Thanks to Fzzy Config)
+- removed dependency on Cloth Config
+- added dependency on Fzzy Config
+
 # 2.0.0
 
 - update to 1.21.1
