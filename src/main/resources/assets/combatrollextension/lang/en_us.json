@@ -1,0 +1,16 @@
+{
+	"attribute.name.generic.roll_invulnerable_ticks": "Roll Invulnerability Ticks",
+	"attribute.name.generic.roll_stamina_cost": "Roll Stamina Cost",
+
+	"combatrollextension.server.rolling_requires_stamina": "Rolling requires stamina",
+	"combatrollextension.server.rolling_requires_stamina.desc": "When true, stamina must be above 0 for rolling.",
+
+	"combatrollextension.server.rolling_requires_stamina_cost": "Rolling requires stamina cost",
+	"combatrollextension.server.rolling_requires_stamina_cost.desc": "When true, stamina must be above 'generic.roll_stamina_cost' for rolling.\nHas no effect when the above option is set to false.",
+
+	"combatrollextension.server.global_rolling_stamina_cost_multiplier": "Global Rolling Stamina Cost Multiplier",
+	"combatrollextension.server.global_rolling_stamina_cost_multiplier.desc": "The stamina cost determined by the 'generic.roll_stamina_cost' attribute is multiplied by this value.",
+
+	"combatrollextension.server.is_roll_invulnerable_ticks_attribute_active": "Roll Invulnerability Attribute Active",
+	"combatrollextension.server.is_roll_invulnerable_ticks_attribute_active.desc": "When true, invulnerable ticks on roll are determined by the attribute 'generic.roll_invulnerable_ticks'.\nThis overrides the 'invulnerable_ticks_upon_roll' setting in the combat roll server config."
+}

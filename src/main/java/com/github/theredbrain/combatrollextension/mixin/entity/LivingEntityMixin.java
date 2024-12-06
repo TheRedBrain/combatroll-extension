@@ -40,4 +40,9 @@ public abstract class LivingEntityMixin extends Entity implements DuckLivingEnti
 		return (float) this.getAttributeValue(CombatRollExtension.ROLL_STAMINA_COST);
 	}
 
+	@Override
+	public float combatrollextension$getActualRollStaminaCost() {
+		return this.combatrollextension$getRollStaminaCost() * CombatRollExtension.SERVER_CONFIG.global_rolling_stamina_cost_multiplier;
+	}
+
 }
